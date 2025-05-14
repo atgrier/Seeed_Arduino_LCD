@@ -893,7 +893,7 @@ void TFT_eSPI::setRotation(uint8_t m)
 
 #elif defined (UC8179_DRIVER)
     #include "TFT_Drivers/UC8179_Rotation.h"
-    
+
 #elif defined (SSD1680_DRIVER)
     #include "TFT_Drivers/SSD1680_Rotation.h"
 
@@ -4234,14 +4234,25 @@ void TFT_eSPI::drawArc(int32_t x, int32_t y, int32_t r, int32_t ir,
       uint16_t pcol = fastBlend(alpha, fg_color, bg_color);
       // Check if an AA pixels need to be drawn
       slope = ((r - cy)<<16)/(r - cx);
-      if (slope <= startSlope[0] && slope >= endSlope[0]) // BL
-        drawPixel(x + cx - r, y - cy + r, pcol);
-      if (slope >= startSlope[1] && slope <= endSlope[1]) // TL
-        drawPixel(x + cx - r, y + cy - r, pcol);
-      if (slope <= startSlope[2] && slope >= endSlope[2]) // TR
-        drawPixel(x - cx + r, y + cy - r, pcol);
-      if (slope <= endSlope[3] && slope >= startSlope[3]) // BR
-        drawPixel(x - cx + r, y - cy + r, pcol);
+      if (bg_color == 0x00FFFFFF) {
+        if (slope <= startSlope[0] && slope >= endSlope[0]) // BL
+          drawPixel(x + cx - r, y - cy + r, fg_color, alpha, bg_color);
+        if (slope >= startSlope[1] && slope <= endSlope[1]) // TL
+          drawPixel(x + cx - r, y + cy - r, fg_color, alpha, bg_color);
+        if (slope <= startSlope[2] && slope >= endSlope[2]) // TR
+          drawPixel(x - cx + r, y + cy - r, fg_color, alpha, bg_color);
+        if (slope <= endSlope[3] && slope >= startSlope[3]) // BR
+          drawPixel(x - cx + r, y - cy + r, fg_color, alpha, bg_color);
+      } else {
+        if (slope <= startSlope[0] && slope >= endSlope[0]) // BL
+          drawPixel(x + cx - r, y - cy + r, pcol);
+        if (slope >= startSlope[1] && slope <= endSlope[1]) // TL
+          drawPixel(x + cx - r, y + cy - r, pcol);
+        if (slope <= startSlope[2] && slope >= endSlope[2]) // TR
+          drawPixel(x - cx + r, y + cy - r, pcol);
+        if (slope <= endSlope[3] && slope >= startSlope[3]) // BR
+          drawPixel(x - cx + r, y - cy + r, pcol);
+      }
     }
     // Add line in inner zone
     if (len[0]) drawFastHLine(x + xst[0] - len[0] + 1 - r, y - cy + r, len[0], fg_color); // BL
@@ -4287,7 +4298,7 @@ void TFT_eSPI::fillSmoothCircle(int32_t x, int32_t y, int32_t r, uint32_t color,
   int32_t r1 = r * r;
   r++;
   int32_t r2 = r * r;
-  
+
   for (int32_t cy = r - 1; cy > 0; cy--)
   {
     int32_t dy2 = (r - cy) * (r - cy);
@@ -6193,4 +6204,3 @@ void TFT_eSPI::getSetup(setup_t &tft_settings)
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////////////
-
