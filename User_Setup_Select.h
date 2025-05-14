@@ -124,11 +124,11 @@
 
 //#include <User_Setups/Setup202_SSD1351_128.h>      // Setup file for ESP32/ESP8266 based SSD1351 128x128 1.5inch OLED display
 
-//#include <User_Setups/Setup203_ST7789.h>     // Setup file for ESP32/ESP8266 based ST7789 240X280 1.69inch TFT 
+//#include <User_Setups/Setup203_ST7789.h>     // Setup file for ESP32/ESP8266 based ST7789 240X280 1.69inch TFT
 
-//#include <User_Setups/Setup204_ESP32_TouchDown.h>     // Setup file for the ESP32 TouchDown based on ILI9488 480 x 320 TFT 
+//#include <User_Setups/Setup204_ESP32_TouchDown.h>     // Setup file for the ESP32 TouchDown based on ILI9488 480 x 320 TFT
 
-//#include <User_Setups/Setup205_ESP32_TouchDown_S3.h>     // Setup file for the ESP32 TouchDown S3 based on ILI9488 480 x 320 TFT 
+//#include <User_Setups/Setup205_ESP32_TouchDown_S3.h>     // Setup file for the ESP32 TouchDown S3 based on ILI9488 480 x 320 TFT
 
 //#include <User_Setups/Setup206_LilyGo_T_Display_S3.h>     // For the LilyGo T-Display S3 based ESP32S3 with ST7789 170 x 320 TFT
 //#include <User_Setups/Setup207_LilyGo_T_HMI.h>            // For the LilyGo T-HMI S3 based ESP32S3 with ST7789 240 x 320 TFT
@@ -157,18 +157,18 @@
 //#include <User_Setups/Dustin_ILI9341_ESP32.h>    // Setup file for Dustin Watts PCB with ILI9341
 //#include <User_Setups/ILI9225.h>
 
-#include <User_Setups/Setup666_XIAO_ILI9341.h>                // Default Setup file for Seeed XIAO 
+// #include <User_Setups/Setup666_XIAO_ILI9341.h>                // Default Setup file for Seeed XIAO
 // #include <User_Setups/Setup500_Seeed_Wio_Terminal.h>          // Setup file for Seeed Wio Terimal with SPI ILI9341 320x240
-// #include <User_Setups/Setup501_Seeed_XIAO_Round_Display.h>    // Setup file for Seeed XIAO ROUND with GC9A01 240 x 240
+#include <User_Setups/Setup501_Seeed_XIAO_Round_Display.h>    // Setup file for Seeed XIAO ROUND with GC9A01 240 x 240
 // #include <User_Setups/Setup502_Seeed_XIAO_EPaper_7inch5.h>    // Setup file for Seeed XIAO with 7.5inch ePaper
 // #include <User_Setups/Setup503_Seeed_XIAO_EPaper_5inch83.h>   // Setup file for Seeed XIAO with 5.83inch ePaper
-// #include <User_Setups/Setup504_Seeed_XIAO_EPaper_2inch9.h>    // Setup file for Seeed XIAO with 2.9inch ePaper     
+// #include <User_Setups/Setup504_Seeed_XIAO_EPaper_2inch9.h>    // Setup file for Seeed XIAO with 2.9inch ePaper
 // #include <User_Setups/Setup505_Seeed_XIAO_EPaper_1inch54.h>   // Setup file for Seeed XIAO with 1.54inch ePaper
 
 
 #endif // USER_SETUP_LOADED
 
-// Compatible with some examples 
+// Compatible with some examples
 #ifdef NRF52840_XXAA
 #include <avr/dtostrf.h>
 #endif
@@ -193,7 +193,7 @@
 #endif
 
 // Legacy setup support, RPI_ILI9486_DRIVER form is deprecated
-// Instead define RPI_DISPLAY_TYPE and also define driver (e.g. ILI9486_DRIVER) 
+// Instead define RPI_DISPLAY_TYPE and also define driver (e.g. ILI9486_DRIVER)
 #if defined (RPI_ILI9486_DRIVER)
   #if !defined (ILI9486_DRIVER)
     #define ILI9486_DRIVER
